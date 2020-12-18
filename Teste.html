@@ -17,11 +17,15 @@
         canvas.width = 540;
         canvas.height = 392;
         let x=250;
+        let t0;
+        let dt;
         requestAnimationFrame(desenha);
         
 
-        function desenha()
+        function desenha(t)
         {
+            t0 = t0 ?? t;
+            dt = (t - t0)/1000;
             //desenha fundo
             cont.fillStyle="black";
             cont.fillRect(0, 0, canvas.width, canvas.height);
@@ -30,6 +34,7 @@
             cont.fillStyle = "white";
             cont.fillRect( x, 150, 20, 20);
             requestAnimationFrame(desenha);
+            t=t0;
         }
         
     </script>
