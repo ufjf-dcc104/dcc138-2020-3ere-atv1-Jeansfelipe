@@ -36,6 +36,11 @@
             //desenha quadrado
             cont.fillStyle = "white";
             cont.fillRect( x, 150, 20, 20);
+            //teste de desenho de circulos
+            cont.beginPath();
+            cont.arc(300,200,100,0,Math.PI/2,true);
+            cont.fillStyle = "white";
+            cont.stroke();
             requestAnimationFrame(desenha);
             t0=t;
         }
