@@ -30,12 +30,14 @@
             cont.fillStyle="black";
             cont.fillRect(0, 0, canvas.width, canvas.height);
            
+            //controle de estado
+            x = x + 10*dt;
+
             //desenha quadrado
             cont.fillStyle = "white";
             cont.fillRect( x, 150, 20, 20);
-            cont.arc(0, 0, 20, 360, 360, false);
             requestAnimationFrame(desenha);
-            t=t0;
+            t0=t;
         }
         
     </script>
