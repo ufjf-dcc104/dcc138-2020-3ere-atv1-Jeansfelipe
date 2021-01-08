@@ -32,10 +32,10 @@
            
             //controle de estado
             x = x + 10*dt;
-
+            y = 100 + 1500*Math.cos(t/200)*dt;
             //desenha quadrado
             cont.fillStyle = "white";
-            cont.fillRect( x, 150, 20, 20);
+            cont.fillRect( x, y, 20, 20);
             //teste de desenho de circulos
             cont.beginPath();
             cont.arc(300,200,100,0,Math.PI/2,true);
@@ -45,6 +45,12 @@
             t0=t;
         }
         
+        addEventListener("keydown", teclaPressionada)
+        function teclaPressionada(event)
+        {
+            console.log(e.key);
+        }
+
     </script>
 </body>
 </html>
