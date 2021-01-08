@@ -48,43 +48,50 @@
             t0=t;
         }
         
+        
+        //controle de velocidades 
         addEventListener("keydown", teclaPressionada)
-        function teclaPressionada(event)
+        function teclaPressionada(e)
         {
+            console.log(e.key);
             switch (e.key) {
+                
                 case "w":
-                    vy = -20;
+                    vy += -20;
                     break;
             
-                    case "s":
-                    vy = 20;
+                    case "s":                   
+                    vy += +20;
+                
                     break;
             
                     case "d":
-                    vx = 20;
+                    vx += +20;
                     break;
             
                     case "a":
-                    vx = -20;
+                    vx += -20;
                     break;
             
                     case "ArrowUp":
-                    vy = -20;
+                    vy += -20;
                     break;
             
                     case "ArrowDown":
-                    vy = 20;
+                    vy += +20;
                     break;
             
                     case "ArrowRight":
-                    vx = 20;
+                    vx += +20;
                     break;
             
                     case "ArrowLeft":
-                    vx = -20;
+                    vx += -20;
                     break;
             
                 default:
+                    vx = 0;
+                    vy = 0;
                     break;
             }
         }
