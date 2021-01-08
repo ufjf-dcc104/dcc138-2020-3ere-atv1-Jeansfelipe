@@ -35,7 +35,7 @@
         let t0;
         let dt;
         requestAnimationFrame(desenha);
-        
+    
 
         function desenha(t)
         {
@@ -46,14 +46,20 @@
             cont.fillRect(0, 0, canvas.width, canvas.height);
            
             //controladores
-            eay = 0.5*(y - ey) - 0.20 * evx;
-            eax = 0.5*(x - eax) - 0.20 * evy;
+            eay = 0.6*(y - ey) - 0.01 * evx;
+            eax = 0.6*(x - ex) - 0.01 * evy;
 
             //Atualiza dinâmica dos estados
             vx = vx + ax*dt;
             x = x + vx*dt;
             y = y+vy*dt;
             vy = vy + ay*dt;
+
+            evx = evx + eax*dt;
+            ex = ex + evx*dt;
+            ey = ey+ evy*dt;
+            evy = evy + eay*dt;
+
             //desenha quadrado
             cont.fillStyle = "white";
             cont.fillRect( x, y, 20, 20);
@@ -63,6 +69,8 @@
             
 
             //teste de desenho de circulo
+            requestAnimationFrame(desenha);
+    
             t0=t;
         }
         
@@ -77,37 +85,38 @@
             {
                 
                 case "w":
-                    ay = -V;
+                    ay = -100;
                     break;
                     
                 case "s":                  
-                    ay = +V;
+                    ay = +100;
                     break;
                     
                 case "d":
-                    ax = +V;
+                    ax = +100;
                     break;
                         
                 case "a":
-                    ax = -V;
+                    ax = -100;
                     break;
                             
                 case "ArrowUp":
-                    ay = -V;
+                    ay = -100;
                     break;
                             
                 case "ArrowDown":
-                    ay = +V;
+                    ay = +100;
                     break;
             
                 case "ArrowRight":
-                    ax = +V;
+                    ax = +100;
                     break;
             
                 case "ArrowLeft":
-                    ax = -V;
+                    ax = -100;
                     break;
             }
+        
         }
             function teclaSolta(e)
         {
