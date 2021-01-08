@@ -89,11 +89,6 @@
                 case "ArrowLeft":
                     ax = -K;
                     break;
-            
-                default:
-                    vx = 0;
-                    vy = 0;
-                    break;
             }
         }
             function teclaSolta(e)
@@ -104,39 +99,42 @@
                 
                 case "w":
                     vy = 0;
+                    ay=0;
                     break;
             
                 case "s":                   
                     vy = 0;
+                    ay=0;
                     break;
             
                 case "d":
                     vx = 0;
+                    ax=0;
                     break;
             
                 case "a":
                     vx = 0;
+                    ax=0;
                     break;
             
                 case "ArrowUp":
                     vy = 0;
+                    ay=0;
                     break;
             
                 case "ArrowDown":
                     vy = 0;
+                    ay=0;
                     break;
             
                 case "ArrowRight":
                     vx = 0;
+                    ax=0;
                     break;
             
                 case "ArrowLeft":
                     vx = 0;
-                    break;
-            
-                default:
-                    vx = 0;
-                    vy = 0;
+                    ax=0;
                     break;
             }
 
