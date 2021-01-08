@@ -18,9 +18,11 @@
         canvas.height = 392;
         let x=250;
         let vx=0;
+        let ax=0;
         let y=100;
-        const V = 150;
+        const K=150;
         let vy=0;
+        let ay=0;
         let t0;
         let dt;
         requestAnimationFrame(desenha);
@@ -34,18 +36,15 @@
             cont.fillStyle="black";
             cont.fillRect(0, 0, canvas.width, canvas.height);
            
-            //controle de estado
+            //Atualiza dinâmica dos estados
+            vx = vx + ax*dt;
             x = x + vx*dt;
             y = y+vy*dt;
+            vy = vy + ay*dt;
             //desenha quadrado
             cont.fillStyle = "white";
             cont.fillRect( x, y, 20, 20);
-            //teste de desenho de circulos
-            cont.beginPath();
-            cont.arc(300,200,100,0,Math.PI/2,true);
-            cont.fillStyle = "white";
-            cont.stroke();
-            requestAnimationFrame(desenha);
+            //teste de desenho de circulo
             t0=t;
         }
         
@@ -60,35 +59,35 @@
             {
                 
                 case "w":
-                    vy = -V;
+                    ay = -K;
                     break;
                     
-                case "s":                   
-                    vy = +V;
+                case "s":                  
+                    ay = +K;
                     break;
                     
                 case "d":
-                    vx = +V;
+                    ax = +K;
                     break;
                         
                 case "a":
-                    vx = -V;
+                    ax = -K;
                     break;
                             
                 case "ArrowUp":
-                    vy = -V;
+                    ay = -K;
                     break;
                             
                 case "ArrowDown":
-                    vy = +V;
+                    ay = +K;
                     break;
             
                 case "ArrowRight":
-                    vx = +V;
+                    ax = +K;
                     break;
             
                 case "ArrowLeft":
-                    vx = -V;
+                    ax = -K;
                     break;
             
                 default:
