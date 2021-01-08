@@ -19,6 +19,7 @@
         let x=250;
         let vx=0;
         let y=100;
+        const V = 150;
         let vy=0;
         let t0;
         let dt;
@@ -55,39 +56,39 @@
         function teclaPressionada(e)
         {
             console.log(e.key);
-            switch (e.key) {
+            switch (e.key) 
+            {
                 
                 case "w":
-                    vy += -50;
+                    vy = -V;
+                    break;
+                    
+                case "s":                   
+                    vy = +V;
+                    break;
+                    
+                case "d":
+                    vx = +V;
+                    break;
+                        
+                case "a":
+                    vx = -V;
+                    break;
+                            
+                case "ArrowUp":
+                    vy = -V;
+                    break;
+                            
+                case "ArrowDown":
+                    vy = +V;
                     break;
             
-                    case "s":                   
-                    vy += +50;
-                
+                case "ArrowRight":
+                    vx = +V;
                     break;
             
-                    case "d":
-                    vx += +50;
-                    break;
-            
-                    case "a":
-                    vx += -50;
-                    break;
-            
-                    case "ArrowUp":
-                    vy += -50;
-                    break;
-            
-                    case "ArrowDown":
-                    vy += +50;
-                    break;
-            
-                    case "ArrowRight":
-                    vx += +50;
-                    break;
-            
-                    case "ArrowLeft":
-                    vx += -50;
+                case "ArrowLeft":
+                    vx = -V;
                     break;
             
                 default:
