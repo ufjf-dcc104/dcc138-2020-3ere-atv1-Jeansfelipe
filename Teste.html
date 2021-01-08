@@ -17,6 +17,9 @@
         canvas.width = 540;
         canvas.height = 392;
         let x=250;
+        let vx=0;
+        let y=100;
+        let vy=0;
         let t0;
         let dt;
         requestAnimationFrame(desenha);
@@ -31,8 +34,8 @@
             cont.fillRect(0, 0, canvas.width, canvas.height);
            
             //controle de estado
-            x = x + 10*dt;
-            y = 100 + 1500*Math.cos(t/200)*dt;
+            x = x + vx*dt;
+            y = y+vy*dt;
             //desenha quadrado
             cont.fillStyle = "white";
             cont.fillRect( x, y, 20, 20);
@@ -48,7 +51,42 @@
         addEventListener("keydown", teclaPressionada)
         function teclaPressionada(event)
         {
-            console.log(e.key);
+            switch (e.key) {
+                case "w":
+                    vy = -20;
+                    break;
+            
+                    case "s":
+                    vy = 20;
+                    break;
+            
+                    case "d":
+                    vx = 20;
+                    break;
+            
+                    case "a":
+                    vx = -20;
+                    break;
+            
+                    case "ArrowUp":
+                    vy = -20;
+                    break;
+            
+                    case "ArrowDown":
+                    vy = 20;
+                    break;
+            
+                    case "ArrowRight":
+                    vx = 20;
+                    break;
+            
+                    case "ArrowLeft":
+                    vx = -20;
+                    break;
+            
+                default:
+                    break;
+            }
         }
 
     </script>
