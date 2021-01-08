@@ -50,43 +50,44 @@
         
         
         //controle de velocidades 
-        addEventListener("keydown", teclaPressionada)
+        addEventListener("keydown", teclaPressionada);
+        addEventListener("keyup", teclaSolta);
         function teclaPressionada(e)
         {
             console.log(e.key);
             switch (e.key) {
                 
                 case "w":
-                    vy += -20;
+                    vy += -50;
                     break;
             
                     case "s":                   
-                    vy += +20;
+                    vy += +50;
                 
                     break;
             
                     case "d":
-                    vx += +20;
+                    vx += +50;
                     break;
             
                     case "a":
-                    vx += -20;
+                    vx += -50;
                     break;
             
                     case "ArrowUp":
-                    vy += -20;
+                    vy += -50;
                     break;
             
                     case "ArrowDown":
-                    vy += +20;
+                    vy += +50;
                     break;
             
                     case "ArrowRight":
-                    vx += +20;
+                    vx += +50;
                     break;
             
                     case "ArrowLeft":
-                    vx += -20;
+                    vx += -50;
                     break;
             
                 default:
@@ -95,6 +96,52 @@
                     break;
             }
         }
+            function teclaSolta(e)
+        {
+            console.log(e.key);
+            switch (e.key) 
+            {
+                
+                case "w":
+                    vy = 0;
+                    break;
+            
+                case "s":                   
+                    vy = 0;
+                    break;
+            
+                case "d":
+                    vx = 0;
+                    break;
+            
+                case "a":
+                    vx = 0;
+                    break;
+            
+                case "ArrowUp":
+                    vy = 0;
+                    break;
+            
+                case "ArrowDown":
+                    vy = 0;
+                    break;
+            
+                case "ArrowRight":
+                    vx = 0;
+                    break;
+            
+                case "ArrowLeft":
+                    vx = 0;
+                    break;
+            
+                default:
+                    vx = 0;
+                    vy = 0;
+                    break;
+            }
+
+        }
+        
 
     </script>
 </body>
