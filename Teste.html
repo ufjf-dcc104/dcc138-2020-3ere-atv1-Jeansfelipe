@@ -26,13 +26,15 @@
             ay : 0,
         };
 
-        let ex=110;
-        let evx=0;
-        let eax=0;
-        let ey=200;
-        let evy=0;
-        let eay=0;
-
+        let e = 
+        {
+            x : 110,
+            vx : 0,
+            ax : 0,
+            y : 200,
+            vy : 0,
+            ay : 0,
+        };
 
         const V = 180;
         let t0;
@@ -49,8 +51,8 @@
             cont.fillRect(0, 0, canvas.width, canvas.height);
            
             //controladores
-            eay = 0.6*(c.y - ey) - 0.01 * evx;
-            eax = 0.6*(c.x - ex) - 0.01 * evy;
+            e.ay = 0.6*(c.y - e.y) - 0.01 * e.vx;
+            e.ax = 0.6*(c.x - e.x) - 0.01 * e.vy;
 
             //Atualiza dinâmica dos estados
             c.vx = c.vx + c.ax*dt;
@@ -58,17 +60,17 @@
             c.y = c.y+c.vy*dt;
             c.vy = c.vy + c.ay*dt;
 
-            evx = evx + eax*dt;
-            ex = ex + evx*dt;
-            ey = ey+ evy*dt;
-            evy = evy + eay*dt;
+            e.vx = e.vx + e.ax*dt;
+            e.x = e.x + e.vx*dt;
+            e.y = e.y+ e.vy*dt;
+            e.vy = e.vy + e.ay*dt;
 
             //desenha quadrado
             cont.fillStyle = "white";
             cont.fillRect( c.x, c.y, 20, 20);
             
             cont.fillStyle = "orange";
-            cont.fillRect( ex, ey, 20, 20);
+            cont.fillRect( e.x, e.y, 20, 20);
             
 
             //teste de desenho de circulo
@@ -123,8 +125,8 @@
         }
             function teclaSolta(e)
         {
-            console.log(e.key);
-            switch (e.key) 
+            console.log(e.ke.y);
+            switch (e.ke.y) 
             {
                 
                 case "w":
