@@ -16,6 +16,15 @@
         let cont = canvas.getContext("2d");
         canvas.width = 540;
         canvas.height = 392;
+        function moverElemento()
+            {
+                this.vx = this.vx + this.ax*dt;
+                this.x = this.x + this.vx*dt;
+                this.y = this.y+this.vy*dt;
+                this.vy = this.vy + this.ay*dt;
+
+            }
+        
         let c = 
         {
             x : 250,
@@ -28,7 +37,8 @@
             {
                 cont.fillStyle = "white";
                 cont.fillRect( this.x, this.y, 20, 20);
-            }
+            },
+            movimento: moverElemento(),
         };
 
         let e = 
@@ -43,7 +53,8 @@
             {
                 cont.fillStyle = "orange";
                 cont.fillRect( this.x, this.y, 20, 20);
-            }
+            },
+            movimento: moverElemento(),
         };
 
         const V = 180;
@@ -65,15 +76,9 @@
             e.ax = 0.6*(c.x - e.x) - 0.01 * e.vy;
 
             //Atualiza dinâmica dos estados
-            c.vx = c.vx + c.ax*dt;
-            c.x = c.x + c.vx*dt;
-            c.y = c.y+c.vy*dt;
-            c.vy = c.vy + c.ay*dt;
-
-            e.vx = e.vx + e.ax*dt;
-            e.x = e.x + e.vx*dt;
-            e.y = e.y+ e.vy*dt;
-            e.vy = e.vy + e.ay*dt;
+            c.movimento();
+            
+            e.movimento();
 
             //desenha quadrado
             p.desenhar();
