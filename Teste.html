@@ -24,6 +24,11 @@
             y : 100,
             vy : 0,
             ay : 0,
+            desenhar: function()
+            {
+                cont.fillStyle = "white";
+                cont.fillRect( this.x, this.y, 20, 20);
+            }
         };
 
         let e = 
@@ -34,6 +39,11 @@
             y : 200,
             vy : 0,
             ay : 0,
+            desenhar: function()
+            {
+                cont.fillStyle = "orange";
+                cont.fillRect( this.x, this.y, 20, 20);
+            }
         };
 
         const V = 180;
@@ -66,11 +76,9 @@
             e.vy = e.vy + e.ay*dt;
 
             //desenha quadrado
-            cont.fillStyle = "white";
-            cont.fillRect( c.x, c.y, 20, 20);
+            p.desenhar();
             
-            cont.fillStyle = "orange";
-            cont.fillRect( e.x, e.y, 20, 20);
+            e.desenhar();
             
 
             //teste de desenho de circulo
