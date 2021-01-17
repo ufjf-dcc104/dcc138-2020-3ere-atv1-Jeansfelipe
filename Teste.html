@@ -47,23 +47,9 @@
             y : 200,
             vy : 0,
             ay : 0,
-            desenhar: function(cor)
-            {
-                cont.fillStyle = cor;
-                cont.fillRect( this.x, this.y, 20, 20);
-            },
-            movimento: function()
-            {
-                this.vx = this.vx + this.ax*dt;
-                this.x = this.x + this.vx*dt;
-                this.y = this.y+this.vy*dt;
-                this.vy = this.vy + this.ay*dt;
-            },
-            controlar: function (alvo)
-        {
-            this.ay = 0.6 * (alvo.y - this.y) - 0.01 * this.vx;
-            this.ax = 0.6 * (alvo.x - this.x) - 0.01 * this.vy;
-        },
+            desenhar: ConstruirElemento,
+            movimento: moverElemento,
+            controlar: PerseguirAlvo,
             //Evitar: EvitarAlvo(),
         };
 
@@ -106,16 +92,21 @@
 
         function moverElemento()
         {
-            this.vx = this.vx + this.ax;
-            this.x = this.x + this.vx;
-            this.y = this.y+this.vy;
-            this.vy = this.vy + this.ay;
+            this.vx = this.vx + this.ax*dt;
+            this.x = this.x + this.vx*dt;
+            this.y = this.y+this.vy*dt;
+            this.vy = this.vy + this.ay*dt;
 
         }
         function ConstruirElemento(cor)
         {
                 cont.fillStyle = cor;
                 cont.fillRect( this.x, this.y, 20, 20);
+        }
+        function PerseguirAlvo(alvo)
+        {
+            this.ay = 0.6 * (alvo.y - this.y) - 0.01 * this.vx;
+            this.ax = 0.6 * (alvo.x - this.x) - 0.01 * this.vy;
         }
         
         /*function EvitarAlvo(alvo)
