@@ -16,7 +16,7 @@
         let cont = canvas.getContext("2d");
         canvas.width = 540;
         canvas.height = 392;
-        
+        let coloração = GeraCor();
         let c = 
         {
             x : 250,
@@ -25,6 +25,7 @@
             y : 100,
             vy : 0,
             ay : 0,
+            cor: "white",
             desenhar:ConstruirElemento,
             movimento: moverElemento,
         };
@@ -34,12 +35,14 @@
         {
             let e = 
             {
-                x : 110 + 200 * numIni,
+                x : 110 + 100 * numIni,
                 vx : 0,
                 ax : 0,
-                y : 200 + 100 * numIni,
+                y : 200 + 50 * numIni,
                 vy : 0,
                 ay : 0,
+                coloração: GeraCor,
+                cor: coloração,
                 desenhar: ConstruirElemento,
                 movimento: moverElemento,
                 controlar: PerseguirAlvo,
@@ -65,17 +68,17 @@
             {
                 const inimigo = inimigos[s];
               //açoes do inimigo
-               inimigos[0].controlar(c);
+               inimigo.controlar(c);
             
                //evitar alvo
               //e.EvitarAlvo(c);
 
               //movimentação do inimigo
-               inimigos[0].movimento();
+               inimigo.movimento();
             
               //Desenha Inimigo
-              inimigos[0].desenhar(GeraCor());
-
+              inimigo.desenhar();
+        
             }
             //Açoes do Elemento Principal
 
@@ -83,9 +86,6 @@
             c.movimento();
             //desenha quadrado
             c.desenhar("white");
-            
-            
-            
 
             //teste de desenho de circulo
             requestAnimationFrame(desenha);
@@ -101,9 +101,9 @@
             this.vy = this.vy + this.ay*dt;
 
         }
-        function ConstruirElemento(cor)
+        function ConstruirElemento()
         {
-                cont.fillStyle = cor;
+                cont.fillStyle = this.cor;
                 cont.fillRect( this.x, this.y, 20, 20);
         }
         function PerseguirAlvo(alvo)
@@ -113,12 +113,12 @@
         }
         function GeraCor()
         {
-            let Hexadecimais = '123456789ABCDEF';
-            let Cores = '#'
-            for (let i = 0; i < 6; i++) {
-                
-                Cores = Cores + Hexadecimais[Math.floor(Math.random()*16)];
-            
+            let Hexadecimais = "123456789ABCDEF";
+            let Cores = "#"
+            for (let i = 0; i < 6; i++) 
+            {
+                const hex = Hexadecimais[Math.floor(Math.random()*16)];
+                Cores += hex;
             }
             return Cores;
             
