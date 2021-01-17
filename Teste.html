@@ -17,13 +17,18 @@
         canvas.width = 540;
         canvas.height = 392;
         function moverElemento()
-            {
-                this.vx = this.vx + this.ax*dt;
-                this.x = this.x + this.vx*dt;
-                this.y = this.y+this.vy*dt;
-                this.vy = this.vy + this.ay*dt;
+        {
+            this.vx = this.vx + this.ax*dt;
+            this.x = this.x + this.vx*dt;
+            this.y = this.y+this.vy*dt;
+            this.vy = this.vy + this.ay*dt;
 
-            }
+        }
+        function ConstruirElemento(cor)
+        {
+                cont.fillStyle = cor;
+                cont.fillRect( this.x, this.y, 20, 20);
+        }
         
         let c = 
         {
@@ -33,11 +38,7 @@
             y : 100,
             vy : 0,
             ay : 0,
-            desenhar: function()
-            {
-                cont.fillStyle = "white";
-                cont.fillRect( this.x, this.y, 20, 20);
-            },
+            desenhar: ConstruirElemento("white"),
             movimento: moverElemento(),
         };
 
@@ -49,11 +50,7 @@
             y : 200,
             vy : 0,
             ay : 0,
-            desenhar: function()
-            {
-                cont.fillStyle = "orange";
-                cont.fillRect( this.x, this.y, 20, 20);
-            },
+            desenhar: ConstruirElemento("Red"),
             movimento: moverElemento(),
         };
 
