@@ -30,14 +30,14 @@
         };
 
         const inimigos = [];
-        for (let numIni = 0; numIni < 1; numIni++) 
+        for (let numIni = 0; numIni < 3; numIni++) 
         {
             let e = 
             {
-                x : 110,
+                x : 110 + 200 * numIni,
                 vx : 0,
                 ax : 0,
-                y : 200,
+                y : 200 + 100 * numIni,
                 vy : 0,
                 ay : 0,
                 desenhar: ConstruirElemento,
@@ -61,20 +61,24 @@
             cont.fillStyle="black";
             cont.fillRect(0, 0, canvas.width, canvas.height);
            
-            //açoes do inimigo
-            inimigos[0].controlar(c);
+            for (let s = 0; s < inimigos.length; s++) 
+            {
+                const inimigo = inimigos[s];
+              //açoes do inimigo
+               inimigos[0].controlar(c);
             
-            //evitar alvo
-            //e.EvitarAlvo(c);
+               //evitar alvo
+              //e.EvitarAlvo(c);
 
-            //movimentação do inimigo
-            inimigos[0].movimento();
+              //movimentação do inimigo
+               inimigos[0].movimento();
             
-            //Desenha Inimigo
-            inimigos[0].desenhar(GeraCor());
-            
+              //Desenha Inimigo
+              inimigos[0].desenhar(GeraCor());
+
+            }
             //Açoes do Elemento Principal
-            
+
             //Movimentação
             c.movimento();
             //desenha quadrado
@@ -114,6 +118,7 @@
             for (let i = 0; i < 6; i++) {
                 
                 Cores = Cores + Hexadecimais[Math.floor(Math.random()*16)];
+            
             }
             return Cores;
             
