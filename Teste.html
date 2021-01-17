@@ -34,6 +34,11 @@
             this.ay = 0.6*(alvo.y - this.y) - 0.01 * this.vx;
             this.ax = 0.6*(alvo.x - this.x) - 0.01 * this.vy;
         }
+        /*function EvitarAlvo(alvo)
+        {
+            this.ay = -0.6*(alvo.y - this.y) - 0.01 * this.vx;
+            this.ax = -0.6*(alvo.x - this.x) - 0.01 * this.vy;
+        }*/
         
         let c = 
         {
@@ -59,6 +64,7 @@
             desenhar: ConstruirElemento("Red"),
             movimento: moverElemento(),
             controlar: PerseguirAlvo(),
+            //Evitar: EvitarAlvo(),
         };
 
         const V = 180;
@@ -78,6 +84,8 @@
             //controladores
             e.PerseguirAlvo(c);
             
+            //evitar alvo
+            //e.EvitarAlvo(c);
 
             //Atualiza dinâmica dos estados
             c.movimento();
@@ -85,7 +93,7 @@
             e.movimento();
 
             //desenha quadrado
-            p.desenhar();
+            c.desenhar();
             
             e.desenhar();
             
