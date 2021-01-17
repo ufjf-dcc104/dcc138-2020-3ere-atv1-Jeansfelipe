@@ -29,6 +29,11 @@
                 cont.fillStyle = cor;
                 cont.fillRect( this.x, this.y, 20, 20);
         }
+        function PerseguirAlvo(alvo)
+        {
+            this.ay = 0.6*(alvo.y - this.y) - 0.01 * this.vx;
+            this.ax = 0.6*(alvo.x - this.x) - 0.01 * this.vy;
+        }
         
         let c = 
         {
@@ -40,6 +45,7 @@
             ay : 0,
             desenhar: ConstruirElemento("white"),
             movimento: moverElemento(),
+            
         };
 
         let e = 
@@ -52,6 +58,7 @@
             ay : 0,
             desenhar: ConstruirElemento("Red"),
             movimento: moverElemento(),
+            controlar: PerseguirAlvo(),
         };
 
         const V = 180;
@@ -69,8 +76,8 @@
             cont.fillRect(0, 0, canvas.width, canvas.height);
            
             //controladores
-            e.ay = 0.6*(c.y - e.y) - 0.01 * e.vx;
-            e.ax = 0.6*(c.x - e.x) - 0.01 * e.vy;
+            e.PerseguirAlvo(c);
+            
 
             //Atualiza dinâmica dos estados
             c.movimento();
