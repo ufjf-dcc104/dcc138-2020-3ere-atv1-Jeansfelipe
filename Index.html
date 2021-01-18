@@ -16,7 +16,6 @@
         let cont = canvas.getContext("2d");
         canvas.width = 540;
         canvas.height = 392;
-        let coloração = GeraCor();
         let c = 
         {
             x : 250,
@@ -33,6 +32,7 @@
         const inimigos = [];
         for (let numIni = 0; numIni < 3; numIni++) 
         {
+            let coloração = GeraCor();
             let e = 
             {
                 x : 110 + 100 * numIni,
