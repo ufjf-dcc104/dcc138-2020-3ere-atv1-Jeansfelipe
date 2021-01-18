@@ -32,7 +32,7 @@
         const inimigos = [];
         for (let numIni = 0; numIni < 3; numIni++) 
         {
-            let coloração = GeraCor();
+            
             let e = 
             {
                 x : 110 + 100 * numIni,
@@ -41,8 +41,7 @@
                 y : 200 + 50 * numIni,
                 vy : 0,
                 ay : 0,
-                coloração: GeraCor,
-                cor: coloração,
+                cor: `hsl(${360* Math.random()},100%,50%)`,
                 desenhar: ConstruirElemento,
                 movimento: moverElemento,
                 controlar: PerseguirAlvo,
@@ -113,14 +112,7 @@
         }
         function GeraCor()
         {
-            let Hexadecimais = "123456789ABCDEF";
-            let Cores = "#"
-            for (let i = 0; i < 6; i++) 
-            {
-                const hex = Hexadecimais[Math.floor(Math.random()*16)];
-                Cores += hex;
-            }
-            return Cores;
+            
             
         }
         
