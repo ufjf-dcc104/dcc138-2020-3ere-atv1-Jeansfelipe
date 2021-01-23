@@ -49,6 +49,26 @@
             };
             inimigos.push(e);
         }
+
+        let tiro = 
+        {
+            x : 300,
+            vx :0,
+            ax : 0,
+            y : 150,
+            vy : 0,
+            ay : 0,
+            cor: "purple",
+            desenhar:function () {
+                cont.fillStyle = this.cor;
+                cont.fillRect( this.x, this.y, 20, 3);
+            },
+            movimento: moverElemento,
+            controlar: function(){},
+        };
+
+        inimigos.push(tiro);
+
         const V = 180;
         let t0;
         let dt;
