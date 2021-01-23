@@ -16,6 +16,7 @@
         let cont = canvas.getContext("2d");
         canvas.width = 540;
         canvas.height = 392;
+        let pontos =0;
         let c = 
         {
             x : 250,
@@ -30,15 +31,15 @@
         };
 
         const inimigos = [];
-        for (let numIni = 0; numIni < 3; numIni++) 
+        for (let numIni = 0; numIni < 20; numIni++) 
         {
             
             let e = 
             {
-                x : canvas.width *(1+ 10 *Math.random()),
-                vx : 0,
+                x : canvas.width *(1 + 10 *Math.random()),
+                vx : -20,
                 ax : 0,
-                y : 200 + 50 * numIni,
+                y : canvas.height * Math.random(),
                 vy : 0,
                 ay : 0,
                 cor: `hsl(${360* Math.random()},100%,50%)`,
@@ -103,6 +104,27 @@
             
               //Desenha Inimigo
               inimigo.desenhar();
+
+              //teste de colisão
+
+              if(colidiu(tiro, inimigo) && tiro!==inimigo) 
+              {
+                tiro.x = -1000;
+                tiro.y = -1000;
+                tiro.vx = 0;
+                tiro.ax = 0;
+                inimigo.x = 1000;
+                inimigo.vx = 100;
+                inimigo.ax = 0;
+                pontos += 3;
+              }
+              if(colidiu(c, inimigo) && c!==inimigo) 
+              {
+                inimigo.x = 1000;
+                inimigo.vx = 100;
+                inimigo.ax = 0;
+                pontos--;
+              }
         
             }
             //Açoes do Elemento Principal
@@ -120,10 +142,10 @@
 
         function moverElemento()
         {
-            this.vx = this.vx + this.ax*dt;
-            this.x = this.x + this.vx*dt;
-            this.y = this.y+this.vy*dt;
-            this.vy = this.vy + this.ay*dt;
+            this.vx = this.vx + this.ax * dt;
+            this.x = this.x + this.vx * dt;
+            this.y = this.y+ this.vy * dt;
+            this.vy = this.vy + this.ay * dt;
 
         }
         function ConstruirElemento()
@@ -133,8 +155,8 @@
         }
         function PerseguirAlvo(alvo)
         {
-            this.ay = 100 * Math.sign(alvo.y - this.y) - 0.01 * this.vx;
-            this.ax = 100 * Math.sign(alvo.x - this.x) - 0.01 * this.vy;
+            this.ay = 100 * Math.sign(alvo.y - this.y) - 0.2 * this.vx;
+            this.ax = 100 * Math.sign(alvo.x - this.x) - 0.2 * this.vy;
         }
         
         /*function EvitarAlvo(alvo)
@@ -142,6 +164,10 @@
             this.ay = -0.6*(alvo.y - this.y) - 0.01 * this.vx;
             this.ax = -0.6*(alvo.x - this.x) - 0.01 * this.vy;
         }*/
+
+        function colidiu(A, B) {
+            return !((A.x > B.x + 5) || (A.x + 5 < B.x ) || (A.y > B.y + 10) || (A.y + 10 < B.y ));
+        }
         
         
         //controle de velocidades 
@@ -238,7 +264,7 @@
                     if(tiro.x === -1000)
                     {
                         tiro.x = c.x;
-                        tiro.y = c.y;
+                        tiro.y = c.y+10;
                         tiro.vx = 200;
                         tiro.ax=100;
                     }
