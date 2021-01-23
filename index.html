@@ -25,6 +25,8 @@
             y : 100,
             vy : 0,
             ay : 0,
+            w: 40,
+            h: 15,
             cor: "white",
             desenhar:ConstruirElemento,
             movimento: moverElemento,
@@ -42,6 +44,8 @@
                 y : canvas.height * Math.random(),
                 vy : 0,
                 ay : 0,
+                w: 15,
+                h: 15,  
                 cor: `hsl(${360* Math.random()},100%,50%)`,
                 desenhar: ConstruirElemento,
                 movimento: moverElemento,
@@ -59,11 +63,10 @@
             y : 150,
             vy : 0,
             ay : 0,
+            w: 5,
+            h: 5,
             cor: "purple",
-            desenhar:function () {
-                cont.fillStyle = this.cor;
-                cont.fillRect( this.x, this.y, 20, 3);
-            },
+            desenhar: ConstruirElemento,
             movimento: moverElemento,
             controlar: function(){
                 if(this.x > canvas.width){
@@ -90,6 +93,12 @@
             cont.fillStyle="black";
             cont.fillRect(0, 0, canvas.width, canvas.height);
            
+            //Açoes do Elemento Principal
+
+            //Movimentação
+            c.movimento();
+
+
             for (let s = 0; s < inimigos.length; s++) 
             {
                 const inimigo = inimigos[s];
@@ -130,10 +139,7 @@
             cont.fillStyle = "yellow";
             cont.font = "10 px IMPACT"
             cont.fillText(pontos, 10, 30);
-            //Açoes do Elemento Principal
-
-            //Movimentação
-            c.movimento();
+            
             //desenha quadrado
             c.desenhar("white");
 
@@ -154,7 +160,7 @@
         function ConstruirElemento()
         {
                 cont.fillStyle = this.cor;
-                cont.fillRect( this.x, this.y, 20, 20);
+                cont.fillRect( this.x, this.y, this.w, this.h);
         }
         function PerseguirAlvo(alvo)
         {
@@ -169,7 +175,7 @@
         }*/
 
         function colidiu(A, B) {
-            return !((A.x > B.x + 5) || (A.x + 5 < B.x ) || (A.y > B.y + 10) || (A.y + 10 < B.y ));
+            return !((A.x > B.x + B.w) || (A.x + A.w < B.x ) || (A.y > B.y + B.h) || (A.y + A.h < B.y ));
         }
         
         
