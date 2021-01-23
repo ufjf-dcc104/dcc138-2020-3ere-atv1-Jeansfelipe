@@ -52,7 +52,7 @@
 
         let tiro = 
         {
-            x : 300,
+            x : -1000,
             vx :0,
             ax : 0,
             y : 150,
@@ -64,7 +64,13 @@
                 cont.fillRect( this.x, this.y, 20, 3);
             },
             movimento: moverElemento,
-            controlar: function(){},
+            controlar: function(){
+                if(this.x > canvas.width){
+                    this.x = -1000;
+                    this.ax=0;
+                    this.vx=0;
+                }
+            },
         };
 
         inimigos.push(tiro);
@@ -231,6 +237,16 @@
                 case "ArrowLeft":
                     c.vx = 0;
                     c.ax=0;
+                    break;
+
+                case " ":
+                    if(tiro.x === -1000)
+                    {
+                        tiro.x = c.x;
+                        tiro.y = c.y;
+                        tiro.vx = 200;
+                        tiro.ax=100;
+                    }
                     break;
             }
 
